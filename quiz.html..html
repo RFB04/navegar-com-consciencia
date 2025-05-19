@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Navegar com Consciência</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .question {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #2980b9;
+    }
+    .feedback {
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quiz - Navegar com Consciência</h1>
+
+  <form id="quizForm">
+    <div class="question">
+      <p>1. O que é educação digital?</p>
+      <input type="radio" name="q1" value="a"> Ensinar apenas com livros físicos.<br>
+      <input type="radio" name="q1" value="b"> Uso de TICs para ensinar, aprender e compartilhar conhecimento.<br>
+      <input type="radio" name="q1" value="c"> Aprender apenas em salas de aula tradicionais.<br>
+      <div class="feedback" id="feedback1"></div>
+    </div>
+
+    <div class="question">
+      <p>2. Qual dessas é uma dica de segurança na internet?</p>
+      <input type="radio" name="q2" value="a"> Compartilhar senhas com amigos.<br>
+      <input type="radio" name="q2" value="b"> Utilizar antivírus desatualizado.<br>
+      <input type="radio" name="q2" value="c"> Criar senhas fortes com letras, números e símbolos.<br>
+      <div class="feedback" id="feedback2"></div>
+    </div>
+
+    <div class="question">
+      <p>3. O que a LGPD garante?</p>
+      <input type="radio" name="q3" value="a"> Acesso gratuito à internet.<br>
+      <input type="radio" name="q3" value="b"> Que os dados pessoais sejam coletados e usados com responsabilidade.<br>
+      <input type="radio" name="q3" value="c"> Que você compartilhe seus dados obrigatoriamente.<br>
+      <div class="feedback" id="feedback3"></div>
+    </div>
+
+    <div class="question">
+      <p>4. Qual recurso ajuda na acessibilidade digital?</p>
+      <input type="radio" name="q4" value="a"> Sites sem contraste.<br>
+      <input type="radio" name="q4" value="b"> Tradução em Libras.<br>
+      <input type="radio" name="q4" value="c"> Conteúdo apenas em texto.<br>
+      <div class="feedback" id="feedback4"></div>
+    </div>
+
+    <div class="question">
+      <p>5. O que é cidadania digital?</p>
+      <input type="radio" name="q5" value="a"> Usar redes sociais sem limites.<br>
+      <input type="radio" name="q5" value="b"> Compartilhar fake news.<br>
+      <input type="radio" name="q5" value="c"> Respeitar as pessoas e usar a tecnologia com responsabilidade.<br>
+      <div class="feedback" id="feedback5"></div>
+    </div>
+
+    <button type="button" onclick="corrigir()">Enviar Respostas</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function corrigir() {
+      const respostas = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'b',
+        q4: 'b',
+        q5: 'c'
+      };
+
+      const explicacoes = {
+        q1: 'Educação digital envolve o uso das TICs para ensinar e aprender.',
+        q2: 'Criar senhas fortes é essencial para a segurança online.',
+        q3: 'A LGPD protege seus dados pessoais com responsabilidade.',
+        q4: 'Tradução em Libras é um recurso importante de acessibilidade.',
+        q5: 'Cidadania digital é agir com respeito e responsabilidade na internet.'
+      };
+
+      let acertos = 0;
+
+      for (let i = 1; i <= 5; i++) {
+        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
+        const feedback = document.getElementById(`feedback${i}`);
+        if (resposta) {
+          if (resposta.value === respostas[`q${i}`]) {
+            acertos++;
+            feedback.innerText = "✅ Correto! " + explicacoes[`q${i}`];
+            feedback.style.color = "green";
+          } else {
+            feedback.innerText = "❌ Incorreto. " + explicacoes[`q${i}`];
+            feedback.style.color = "red";
+          }
+        } else {
+          feedback.innerText = "❗ Por favor, selecione uma resposta.";
+          feedback.style.color = "orange";
+        }
+      }
+
+      document.getElementById("result").innerText = `Você acertou ${acertos} de 5 perguntas.`;
+    }
+  </script>
+
+</body>
+</html>
