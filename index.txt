@@ -18,7 +18,7 @@
 </head>
 <body>
     <h1>Navegar com Consciência</h1>
-    <img src="Educação Digital e Cidadania Virtual.png" alt="Ilustração Navegar com Consciência" class="ilustracao">
+    <img src="educacao-digital.png" alt="Ilustração Navegar com Consciência" class="ilustracao">
 
     <section>
         <h2>📋 Participe!</h2>
